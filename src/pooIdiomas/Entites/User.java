@@ -1,4 +1,6 @@
-package pooIdiomas;
+package pooIdiomas.Entites;
+
+import java.util.ArrayList;
 
 import exceptions.EmptyArgumentException;
 import exceptions.InvalidFormatArgumentException;
@@ -8,8 +10,10 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	
+	private ArrayList<Language> languages;
 	private Integer minPasswordSize = 3;
+	
+	
 	
 	//Constructor
 	public User(String name, String email, String password) {
@@ -17,6 +21,7 @@ public class User {
 		setName(name);
 		setEmail(email);
 		setPassword(password);
+		languages = new ArrayList<Language>();
 	}
 	
 	//Getters and Setters
@@ -64,6 +69,25 @@ public class User {
 		return password;
 	}
 	
+	public void addNewLanguage(Language newLanguage) {
+		if(!this.languages.contains(newLanguage)) {
+			this.languages.add(newLanguage);
+		}
+	}
 	
-
+	public ArrayList<Language> getLanguages(){
+		return this.languages;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		String msg = "";
+		for (Language language : languages) {
+			msg += language.getName() + " ";
+		}
+		
+		return "Name: " + this.getName() + ", Email: " + this.getEmail() + ",Languages learning: " + msg + ".";
+	}
 }
