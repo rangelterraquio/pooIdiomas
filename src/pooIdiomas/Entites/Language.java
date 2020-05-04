@@ -58,7 +58,7 @@ public class Language {
 	@Override
 	public String toString() {
 		
-		return "Language: " + this.getName() + ", Word groups: " + this.wordGroups.toString() + ".";
+		return "Language: " + this.getName().toUpperCase() + ",\nWord groups: " + this.wordGroups.toString() + ".";
 	}
 
 }

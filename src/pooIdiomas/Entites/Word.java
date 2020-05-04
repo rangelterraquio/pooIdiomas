@@ -50,7 +50,7 @@ public class Word {
 	
 	@Override
 	public String toString() {
-		return "Word:  " + this.getContent() + ", Translation: " + this.getTranslation() + ", Exemplo: " + this.exampleUse; 
+		return "\n\nWord:  " + this.getContent() + ", Translation: " + this.getTranslation() + ", Exemplo: " + this.exampleUse; 
 	}
 
 }

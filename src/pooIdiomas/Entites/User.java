@@ -2,11 +2,12 @@ package pooIdiomas.Entites;
 
 import java.util.ArrayList;
 
+
 import exceptions.EmptyArgumentException;
 import exceptions.InvalidFormatArgumentException;
 
-public class User {
 
+public class User {
 	private String name;
 	private String email;
 	private String password;

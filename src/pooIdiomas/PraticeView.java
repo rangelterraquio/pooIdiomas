@@ -8,7 +8,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +19,8 @@ import javax.swing.SwingUtilities;
 import pooIdiomas.Entites.Word;
 
 public class PraticeView extends JFrame implements ActionListener {
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel panel;
 	private ArrayList<Word> words;
 	private JLabel labelTime;
@@ -29,7 +30,8 @@ public class PraticeView extends JFrame implements ActionListener {
 	private JButton nextButton;
 	private ArrayList<String> answers = new ArrayList<String>();
 	private Integer indice = 0;
-	private static int interval;
+	private Integer amountOfWords = 0;
+	private static int interval; //Defines time for each difficult
 	private JButton ok = new JButton("OK");
 	private Timer timer;
 
@@ -37,6 +39,7 @@ public class PraticeView extends JFrame implements ActionListener {
 		this.words = words;
 		setupDifficult(difficult);
 		setupView();
+		setAmountOfWords();
 	}
 	
 	
@@ -109,7 +112,7 @@ public class PraticeView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		indice++;
-		if (indice == 5) {
+		if (indice == amountOfWords) {
 			panel.remove(nextButton);
 			panel.remove(aweserTextField);
 			wordLabel.setText("You did it :D");
@@ -156,5 +159,13 @@ public class PraticeView extends JFrame implements ActionListener {
 	private void stopTime() {
 		timer.cancel();
         timer.purge();
+	}
+	
+	private void setAmountOfWords() {
+		if (words.size() >= 10) {
+			amountOfWords = 10;
+		}else {
+			amountOfWords = words.size(); 
+		}
 	}
 }

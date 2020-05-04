@@ -59,8 +59,7 @@ public class WordGroup {
 	
 	@Override
 	public String toString() {
-		
-		return "Word group: " + this.getName() + ", Amount of words: " + this.getWords().size();
+		return "Word group: " + this.getName().toUpperCase() + ", Amount of words: " + this.getWords().size();
 	}
 	
 }

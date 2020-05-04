@@ -1,44 +1,33 @@
 package pooIdiomas;
 
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.NumberFormat;
+
 import java.util.ArrayList;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
-import java.util.Timer;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 import exceptions.EmptyArgumentException;
-import jdk.nashorn.api.tree.ForInLoopTree;
 import pooIdiomas.Entites.Language;
 import pooIdiomas.Entites.User;
 import pooIdiomas.Entites.Word;
 import pooIdiomas.Entites.WordGroup;
 
-public class Utils implements ActionListener{
+public class Utils{
 	
 	//Show sign in view
-	static Boolean validateUser(ArrayList<User> users) {
+	static User validateUser(ArrayList<User> users) {
 		
 		String email = View.showInputText("Email", "Type your email");
-		String password = View.showInputText("Password", "Type your Password");
+		String password = View.showInputPassword("Type your Password");
 		
-		if (users.isEmpty()) {return false;}
+		if (users.isEmpty()) {return null;}
 		
 		for (User user : users) {
 			if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-				return true;
+			
+				return user;
 			}
 		}
 		
-		return false;
+		return null;
 		
 	}
 	
@@ -47,7 +36,7 @@ public class Utils implements ActionListener{
 		
 		String name = View.showInputText("Name", "Type your Name");
 		String email = View.showInputText("Email", "Type your email");
-		String password = View.showInputText("Password", "Type your Password");
+		String password = View.showInputPassword("Type your Password");
 		
 		return new User(name,email,password);
 		
@@ -128,7 +117,6 @@ public class Utils implements ActionListener{
 		return new Word(word, translation, example);
 	}
 	
-	static int interval = 180000/3;
 	
 	static void pratice(ArrayList<Word> words, Difficult difficult) {
 		
@@ -155,13 +143,5 @@ public class Utils implements ActionListener{
 		  }
 		  return correct;
 	  }
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand() == "nextButton") {
-			
-		}
-		
-	}
 	  
 }
